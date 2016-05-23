@@ -190,7 +190,9 @@ class MaximumLikelihoodHMSM(_Estimator, _HMSM):
                 self.stride = int(min(self.lag, 2*corrtime))
 
         # LAG AND STRIDE DATA
-        dtrajs_lagged_strided = bhmm.lag_observations(dtrajs, self.lag, stride=self.stride)
+        # JFR 19May2016 - This function was not loading properly
+        #dtrajs_lagged_strided = bhmm.lag_observations(dtrajs, self.lag, stride=self.stride)
+        dtrajs_lagged_strided = bhmm.api.lag_observations(dtrajs, self.lag, stride=self.stride)
 
         # OBSERVATION SET
         if self.observe_nonempty:
